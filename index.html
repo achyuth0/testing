@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game - Modern Retro</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Particle container for visual effects -->
+        <div class="particles-container"></div>
+
+        <!-- Main game screen -->
+        <div class="game-screen">
+            <!-- Menu Screen -->
+            <div class="screen menu-screen active">
+                <div class="menu-content">
+                    <h1 class="game-title">SNAKE</h1>
+                    <div class="subtitle">Modern Retro Edition</div>
+                    
+                    <div class="menu-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">High Score</span>
+                            <span class="stat-value" id="menuHighScore">0</span>
+                        </div>
+                    </div>
+
+                    <div class="difficulty-selector">
+                        <label class="difficulty-label">Select Difficulty:</label>
+                        <div class="difficulty-buttons">
+                            <button class="difficulty-btn" data-difficulty="easy">
+                                <span class="difficulty-name">Easy</span>
+                                <span class="difficulty-speed">Slow</span>
+                            </button>
+                            <button class="difficulty-btn active" data-difficulty="medium">
+                                <span class="difficulty-name">Medium</span>
+                                <span class="difficulty-speed">Normal</span>
+                            </button>
+                            <button class="difficulty-btn" data-difficulty="hard">
+                                <span class="difficulty-name">Hard</span>
+                                <span class="difficulty-speed">Fast</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" id="startBtn">Start Game</button>
+                    <div class="instructions">
+                        <p>Use <span class="key">ARROW KEYS</span> or <span class="key">WASD</span> to move</p>
+                        <p>Eat food to grow and score points</p>
+                        <p>Don't hit walls or yourself!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Screen -->
+            <div class="screen game-screen-content">
+                <div class="game-header">
+                    <div class="score-display">
+                        <span class="score-label">Score</span>
+                        <span class="score-value" id="currentScore">0</span>
+                    </div>
+                    <div class="difficulty-badge" id="difficultyBadge">Medium</div>
+                    <div class="high-score-display">
+                        <span class="score-label">High</span>
+                        <span class="score-value" id="gameHighScore">0</span>
+                    </div>
+                </div>
+
+                <div class="game-board-container">
+                    <canvas id="gameCanvas" width="400" height="400"></canvas>
+                </div>
+
+                <div class="game-controls">
+                    <button class="btn btn-secondary" id="pauseBtn">Pause</button>
+                </div>
+            </div>
+
+            <!-- Game Over Screen -->
+            <div class="screen game-over-screen">
+                <div class="game-over-content">
+                    <h2 class="game-over-title">GAME OVER</h2>
+                    
+                    <div class="final-stats">
+                        <div class="stat-row">
+                            <span class="stat-name">Final Score</span>
+                            <span class="stat-result" id="finalScore">0</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-name">Snake Length</span>
+                            <span class="stat-result" id="snakeLength">0</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-name">Food Eaten</span>
+                            <span class="stat-result" id="foodEaten">0</span>
+                        </div>
+                        <div class="stat-row" id="newHighScoreRow" style="display: none;">
+                            <span class="stat-name new-record">🏆 New High Score! 🏆</span>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-primary" id="restartBtn">Play Again</button>
+                        <button class="btn btn-secondary" id="menuBtn">Main Menu</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pause Screen -->
+            <div class="screen pause-screen">
+                <div class="pause-overlay">
+                    <div class="pause-content">
+                        <h2>PAUSED</h2>
+                        <div class="pause-controls">
+                            <button class="btn btn-primary" id="resumeBtn">Resume</button>
+                            <button class="btn btn-secondary" id="pauseMenuBtn">Main Menu</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
